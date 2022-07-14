@@ -1,7 +1,11 @@
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+
+
 const inquirer = require("inquirer");
+
+
 const path = require("path");
 const fs = require("fs");
 
@@ -36,6 +40,7 @@ const qs = [
 ];
 
 const team = [];
+
 const generateTeam = () => {
     inquirer
         .prompt(qs)
@@ -89,9 +94,6 @@ const generateTeam = () => {
                     if (ans2.addMember) {
                         generateTeam();
                     } else {
-                        team.forEach((team) => {
-                            console.log(team);
-                        });
                         fs.writeFile(outputPath, render(team), (err) => {
                             if (err) {
                                 throw err;
